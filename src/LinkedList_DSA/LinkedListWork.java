@@ -25,6 +25,67 @@ public class LinkedListWork {
             n.next = node;
         }
     }
+
+    public void insertAtStart (int data){
+        //every time we insert we have to create a new node
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+        //What was the value for head will be the value of this node as we are inserting the node at the starting
+        node.next = head;
+        //head changed to the node
+        head = node;
+    }
+
+    //This method will be used to insert the data to any position ( we will be naming pos as index)
+    public void insertAt(int index , int data){
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+
+        //Special condition if the index is 0
+        if(index == 0){
+            insertAtStart(data);
+        }
+        else {
+
+
+            //Starting with head because we need to traverse from the beginning
+            Node n = head;
+            //index-1 because we are referring to next node
+            for (int i = 0; i < index - 1; i++) {
+                n = n.next;
+            }
+            //we need to now chnage the address of the current node with new node
+            node.next = n.next;
+            // updating the address of the node to point it to next node
+            n.next = node;
+        }
+
+
+    }
+    //Delete the element at a specific position/index
+    public void deleteAt(int index){
+       if(index == 0){
+           head = head.next;
+       }
+       else{
+           Node n = head;
+           //temporary node n1
+           Node n1 = null;
+           for(int i = 0;i<index-1;i++){
+
+               n=n.next;
+           }
+           //n1 is the next element of the node
+           n1 = n.next;
+           //n.next need to replaced by n1.next (only address is getting changed here in this case
+           n.next = n1.next;
+           //nullifying our temporary node
+           n1 = null;
+       }
+
+    }
     //method to print the linkedlist data
     public void show()
     {

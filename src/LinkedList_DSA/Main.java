@@ -9,6 +9,10 @@ public class Main {
         list.insert(121);
         list.insert(1001);
         list.insert(1);
+        list.insertAtStart(100);
+        list.insertAt(5,200);
+        list.insertAt(0,2);
+        list.deleteAt(0);
         list.show();
 
 
